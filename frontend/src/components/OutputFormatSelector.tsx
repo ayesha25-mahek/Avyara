@@ -1,72 +1,70 @@
-import React from 'react';
 import {
   Video, Linkedin, Twitter, Presentation, FileText,
   BarChart2, Layout, PenTool, Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
 import type { OutputFormat, OutputFormatMeta } from '@/types';
 
 const OUTPUT_FORMATS: OutputFormatMeta[] = [
   {
     id: 'linkedin',
     label: 'LinkedIn Post',
-    description: 'Professional post ready to publish',
+    description: 'Executive positioning & hooks',
     icon: 'Linkedin',
-    estimatedTime: '~30 sec',
+    estimatedTime: '~20s',
     badge: 'Popular',
   },
   {
     id: 'twitter',
-    label: 'Twitter/X Post',
-    description: 'Optimised tweets or thread',
+    label: 'X / Twitter',
+    description: 'Thread breakdown & hooks',
     icon: 'Twitter',
-    estimatedTime: '~20 sec',
+    estimatedTime: '~15s',
   },
   {
     id: 'executive_summary',
-    label: 'Executive Summary',
-    description: 'Concise C-suite briefing',
+    label: 'Executive Brief',
+    description: 'Decision matrices & KPIs',
     icon: 'BarChart2',
-    estimatedTime: '~30 sec',
-    badge: 'Popular',
+    estimatedTime: '~25s',
+    badge: 'Strategic',
   },
   {
     id: 'presentation',
-    label: 'Presentation',
-    description: 'PPTX slides with speaker notes',
+    label: 'Deck Presentation',
+    description: 'Slide deck & speaker notes',
     icon: 'Presentation',
-    estimatedTime: '~1 min',
+    estimatedTime: '~45s',
   },
   {
     id: 'advisory',
-    label: 'Advisory Document',
-    description: 'Structured advisory with recommendations',
+    label: 'Technical Advisory',
+    description: 'Mitigation frameworks',
     icon: 'FileText',
-    estimatedTime: '~45 sec',
-    badge: 'New',
+    estimatedTime: '~35s',
+    badge: 'Enterprise',
   },
   {
     id: 'infographic',
-    label: 'Infographic',
-    description: 'Key messaging & layout guide',
+    label: 'Infographic Spec',
+    description: 'Data visual layout & calls',
     icon: 'Layout',
-    estimatedTime: '~45 sec',
+    estimatedTime: '~30s',
   },
   {
     id: 'article',
-    label: 'Article',
-    description: 'Full-length article or blog post',
+    label: 'Deep-Dive Article',
+    description: 'Technical whitepaper',
     icon: 'PenTool',
-    estimatedTime: '~1 min',
+    estimatedTime: '~50s',
   },
   {
     id: 'video',
     label: 'AI Video Package',
-    description: 'Script, storyboard & narration',
+    description: 'Scenes & neural audio',
     icon: 'Video',
-    estimatedTime: '3–5 min',
-    badge: 'AI Video',
+    estimatedTime: '2–4m',
+    badge: 'Precision',
   },
 ];
 
@@ -97,48 +95,51 @@ const OutputFormatCard: React.FC<OutputFormatCardProps> = ({ format, selected, o
       disabled={disabled}
       onClick={() => onToggle(format.id)}
       className={cn(
-        'relative group w-full text-left rounded-xl border p-4 transition-all duration-200',
-        'focus:outline-none focus:ring-2 focus:ring-violet-500/50',
-        'hover:scale-[1.02]',
+        'group relative w-full flex items-center gap-2.5 p-2 rounded-md transition-all duration-150 text-left border select-none',
         selected
-          ? 'border-violet-500/60 bg-violet-600/10 shadow-lg shadow-violet-500/15 selected-card-border'
-          : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/8 hover:shadow-md hover:shadow-violet-500/5',
-        disabled && 'opacity-50 cursor-not-allowed hover:scale-100'
+          ? 'bg-[#00D084]/15 border-[#00D084]/80 text-white'
+          : 'bg-[#040906] border-[#142B1F] text-gray-300 hover:border-[#00D084]/40 hover:bg-[#07150E]',
+        disabled && 'opacity-40 cursor-not-allowed'
       )}
     >
-      {/* Selected checkmark */}
-      {selected && (
-        <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-violet-600 flex items-center justify-center">
-          <Check className="w-3 h-3 text-white" />
-        </div>
-      )}
-
-      {/* Icon */}
-      <div className={cn(
-        'w-9 h-9 rounded-lg flex items-center justify-center mb-3 transition-colors',
-        selected ? 'bg-violet-600/30' : 'bg-white/10 group-hover:bg-white/15'
-      )}>
-        <IconComponent className={cn('w-4.5 h-4.5', selected ? 'text-violet-300' : 'text-gray-300')} />
-      </div>
-
-      {/* Label */}
-      <div className="flex items-center gap-2 mb-1">
-        <span className={cn('text-sm font-semibold', selected ? 'text-violet-200' : 'text-gray-100')}>
-          {format.label}
-        </span>
-        {format.badge && (
-          <Badge variant={format.badge === 'Popular' ? 'default' : format.badge === 'AI Video' ? 'blue' : 'warning'}
-            className="text-[10px] px-1.5 py-0">
-            {format.badge}
-          </Badge>
+      {/* Small Checkbox Square */}
+      <div
+        className={cn(
+          'w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 transition-colors',
+          selected
+            ? 'bg-[#00D084] border-[#00D084] text-black'
+            : 'border-[#1E4230] bg-[#08120D] group-hover:border-[#00D084]/60'
         )}
+      >
+        {selected && <Check className="w-3 h-3 stroke-[3]" />}
       </div>
 
-      {/* Description */}
-      <p className="text-xs text-gray-400 leading-relaxed mb-2">{format.description}</p>
+      {/* Mini Icon */}
+      <div
+        className={cn(
+          'w-6 h-6 rounded-sm flex items-center justify-center shrink-0 border transition-colors',
+          selected
+            ? 'bg-[#00D084]/20 border-[#00D084]/40 text-[#00D084]'
+            : 'bg-[#08120D] border-[#163022] text-gray-400 group-hover:text-white'
+        )}
+      >
+        <IconComponent className="w-3 h-3" />
+      </div>
 
-      {/* Estimated time */}
-      <span className="text-[10px] text-gray-500">{format.estimatedTime}</span>
+      {/* Label and Info */}
+      <div className="flex-1 min-w-0 pr-1">
+        <div className="flex items-center gap-1.5 justify-between">
+          <span className="text-xs font-bold font-serif truncate leading-tight">
+            {format.label}
+          </span>
+          <span className="text-[9px] font-mono text-gray-500 shrink-0">
+            {format.estimatedTime}
+          </span>
+        </div>
+        <p className="text-[10px] text-gray-400 truncate leading-tight font-serif">
+          {format.description}
+        </p>
+      </div>
     </button>
   );
 };
@@ -151,14 +152,23 @@ interface OutputFormatSelectorProps {
 
 const OutputFormatSelector: React.FC<OutputFormatSelectorProps> = ({ selected, onToggle, disabled }) => {
   return (
-    <div>
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-semibold text-gray-200">Select Output Formats</h3>
+    <div className="space-y-2.5">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-sm bg-[#00D084]" />
+          <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide uppercase font-serif">
+            Select Output Formats
+          </h3>
+        </div>
         {selected.length > 0 && (
-          <span className="text-xs text-violet-400">{selected.length} selected</span>
+          <span className="text-[11px] font-serif font-semibold px-2 py-0.5 rounded-sm bg-[#00D084]/15 text-[#00D084] border border-[#00D084]/30">
+            {selected.length} Selected
+          </span>
         )}
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+
+      {/* Small Checkbox Grid: 2 cols on mobile, 4 cols on desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
         {OUTPUT_FORMATS.map((format) => (
           <OutputFormatCard
             key={format.id}

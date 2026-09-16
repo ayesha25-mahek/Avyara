@@ -3,10 +3,10 @@ import type { OutputFormat, ProgressEvent, ResultEvent } from '@/types';
 const API_BASE = '/api';
 
 export interface GenerateCallbacks {
-  onProgress: (event: ProgressEvent) => void;
-  onResult: (event: ResultEvent) => void;
-  onDone: () => void;
-  onError: (message: string) => void;
+  onProgress?: (event: ProgressEvent) => void;
+  onResult?: (event: ResultEvent) => void;
+  onDone?: () => void;
+  onError?: (message: string) => void;
 }
 
 /**
@@ -65,16 +65,16 @@ export async function generateContent(
               const parsed = JSON.parse(currentData);
               switch (currentEvent) {
                 case 'progress':
-                  onProgress(parsed as ProgressEvent);
+                  onProgress?.(parsed as ProgressEvent);
                   break;
                 case 'result':
-                  onResult(parsed as ResultEvent);
+                  onResult?.(parsed as ResultEvent);
                   break;
                 case 'done':
-                  onDone();
+                  onDone?.();
                   break;
                 case 'error':
-                  onError((parsed as { message: string }).message ?? 'Unknown error');
+                  onError?.((parsed as { message: string }).message ?? 'Unknown error');
                   break;
               }
             } catch {
@@ -91,7 +91,7 @@ export async function generateContent(
       return; // cancelled by user
     }
     const message = err instanceof Error ? err.message : 'Network error occurred';
-    onError(message);
+    onError?.(message);
   }
 }
 

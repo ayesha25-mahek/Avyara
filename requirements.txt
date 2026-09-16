@@ -17,3 +17,7 @@ elevenlabs
 imageio
 imageio-ffmpeg
 numpy
+psycopg2-binary>=2.9.9
+pgvector>=0.2.5
+sentence-transformers>=2.7.0
+openai>=1.20.0

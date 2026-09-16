@@ -172,11 +172,25 @@ def _build_router_and_generators():
             self.planner.llm = pool
             self.ppt = PPTGenerator()
 
-        def generate(self, content_model, output_request):
-            slide_plan = self.planner.create_slide_plan(content_model, output_request)
-            filename = f"presentation_{uuid.uuid4().hex[:8]}.pptx"
-            path = self.ppt.generate(slide_plan, filename)
-            return {"type": "file", "path": path, "filename": filename}
+            # Format a clear readable slide plan text outline for live UI preview
+            outline_lines = [f"# {slide_plan[0].get('title', 'Presentation Deck')}\n"] if slide_plan else []
+            for s in slide_plan:
+                s_num = s.get("slide_number", "")
+                s_title = s.get("title", "")
+                s_type = s.get("type", "Slide")
+                outline_lines.append(f"## Slide {s_num}: {s_title} ({s_type.upper()})")
+                s_content = s.get("content", [])
+                if isinstance(s_content, list):
+                    for pt in s_content:
+                        outline_lines.append(f"- {pt}")
+                elif s_content:
+                    outline_lines.append(f"{s_content}")
+                if s.get("speaker_notes"):
+                    outline_lines.append(f"\n*Speaker Notes:* {s.get('speaker_notes')}")
+                outline_lines.append("")
+
+            preview_text = "\n".join(outline_lines).strip()
+            return {"type": "file", "path": path, "filename": filename, "content": preview_text}
 
     presentation = PresentationGenerator()
 
@@ -415,10 +429,11 @@ async def generate(
                             file_path = result.get("path", "")
                             filename  = result.get("filename", "")
                             dl_url    = f"/files/{Path(file_path).relative_to('output').as_posix()}" if file_path else ""
+                            file_content = result.get("content") or f"Your {label} has been generated."
                             yield _sse("result", {
                                 "output_type": output_type,
                                 "status": "success",
-                                "content": f"Your {label} has been generated.",
+                                "content": file_content,
                                 "download_url": dl_url,
                                 "filename": filename,
                             })

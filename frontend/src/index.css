@@ -8,135 +8,165 @@
   }
 
   html {
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #040806;
+    color: #E8F5EE;
   }
 
   body {
-    background-color: #0A0A0F;
-    color: #f1f1f1;
+    background-color: #040806;
+    color: #E8F5EE;
+    font-family: 'Times New Roman', Times, serif;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
-  /* Custom scrollbar */
+  /* Custom high-tech scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #111116;
-    border-radius: 3px;
+    background: #08100C;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #2A2A3A;
+    background: #1B362C;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #7C3AED;
+    background: #00E599;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: #2A2A3A #111116;
+    scrollbar-color: #1B362C #08100C;
   }
 }
 
 @layer components {
-  /* Glass morphism card */
-  .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  /* Visible Technical Cyber Grid for Hero Section (Image 1 SANS / Cortex style) */
+  .hero-cortex-grid {
+    background-image: 
+      linear-gradient(to right, rgba(0, 208, 132, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 208, 132, 0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent;
+  /* Authentic Palo Alto Cortex Subtle Dark Gradient (Pleasant, matte, no blinding lights) */
+  .cortex-hero-bg {
+    background: linear-gradient(90deg, #000000 0%, #010A05 45%, #04190F 80%, #02120A 100%);
   }
 
-  /* Gradient button */
-  .btn-gradient {
-    @apply bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white transition-all duration-150;
+  /* User's Exact "Avyra" Brush/Street Font Style from Image 3 */
+  .font-agentic {
+    font-family: 'Sedgwick Ave Display', 'Permanent Marker', cursive, sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    background: linear-gradient(180deg, #5EEAD4 0%, #4ADE80 30%, #EAB308 70%, #EA580C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    letter-spacing: 0.04em;
+    transform: skewX(-7deg) rotate(-1deg);
   }
 
-  /* Animated gradient border for selected cards */
-  .selected-card-border {
+  /* Exact Palo Alto Cortex Pill Buttons (Images 1 & 2) */
+  .btn-pill-green {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#00D084] text-black font-bold text-sm tracking-tight transition-all duration-150 hover:bg-[#05E594] hover:scale-[1.01] active:scale-[0.98];
+  }
+
+  /* SANS Analyst Report Booklet Card from Image 1 (Pleasant, Decreased Curves) */
+  .sans-report-card {
+    background: linear-gradient(145deg, #05140E 0%, #020805 100%);
+    border: 1px solid #143524;
+  }
+
+  /* Figma-grade Clean Matte Cards (Subtle Decreased Curves) */
+  .figma-card {
+    @apply bg-[#040805] border border-[#11291C] rounded-md transition-all duration-150;
+  }
+
+  .figma-card-interactive {
+    @apply bg-[#050B07] border border-[#11291C] hover:border-[#00D084]/40 hover:bg-[#07130C] rounded-md transition-all duration-150;
+  }
+
+  /* Cortex Clean Card with decreased curves */
+  .cortex-card {
+    @apply bg-[#040805] border border-[#11291C] rounded-md transition-all duration-150;
+  }
+
+  .cortex-card-interactive {
+    @apply bg-[#050B07] border border-[#11291C] hover:border-[#00D084]/40 hover:bg-[#07130C] rounded-md transition-all duration-150;
+  }
+
+  /* Cortex Gradient Text */
+  .gradient-cortex {
+    @apply bg-gradient-to-r from-white via-[#E8F5EE] to-gray-300 bg-clip-text text-transparent;
+  }
+
+  .gradient-cortex-green {
+    @apply bg-gradient-to-r from-[#00D084] to-[#10B981] bg-clip-text text-transparent;
+  }
+
+  /* Cortex Primary Button */
+  .btn-cortex {
+    @apply relative overflow-hidden bg-[#071F14] text-[#E8F5EE] hover:text-white font-semibold shadow-sm transition-all duration-200 border border-[#143D2A] hover:border-[#00D084]/60 hover:bg-[#0B2A1C];
+  }
+
+  /* Pleasant Selected Border for Cards */
+  .cortex-selected-border {
+    border-color: #00D084 !important;
+    background: #06170F !important;
+    box-shadow: 0 0 10px rgba(0, 208, 132, 0.12);
+  }
+
+  /* Subtle Status indicators (No blinding neon glow) */
+  .status-dot-cortex {
+    @apply w-2 h-2 rounded-full bg-[#00D084];
+  }
+
+  .status-dot-orange,
+  .status-dot-alert {
+    @apply w-2 h-2 rounded-full bg-[#EAB308];
+  }
+
+  /* Precision HUD brackets */
+  .hud-bracket {
     position: relative;
-    border-color: transparent !important;
   }
-
-  .selected-card-border::before {
+  .hud-bracket::before {
     content: '';
     position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, #7C3AED, #4F46E5, #7C3AED);
-    background-size: 200% 200%;
-    animation: gradient-border 3s ease infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: 0;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #00E599;
+    border-left: 2px solid #00E599;
+    border-top-left-radius: 4px;
+    opacity: 0.8;
   }
-
-  @keyframes gradient-border {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Progress bar shimmer */
-  .progress-shimmer {
-    background: linear-gradient(
-      90deg,
-      rgba(124, 58, 237, 0.8) 0%,
-      rgba(99, 102, 241, 1) 40%,
-      rgba(139, 92, 246, 1) 60%,
-      rgba(124, 58, 237, 0.8) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s linear infinite;
-  }
-
-  /* Glow effect */
-  .glow-violet {
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3), 0 0 40px rgba(124, 58, 237, 0.1);
-  }
-
-  .glow-violet-sm {
-    box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
-  }
-
-  /* Status dot */
-  .status-dot {
-    @apply w-2 h-2 rounded-full bg-emerald-400;
-    box-shadow: 0 0 6px rgba(52, 211, 153, 0.6);
-    animation: pulse-dot 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(52, 211, 153, 0.6); }
-    50% { opacity: 0.7; box-shadow: 0 0 12px rgba(52, 211, 153, 0.8); }
+  .hud-bracket::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid #06B6D4;
+    border-right: 2px solid #06B6D4;
+    border-bottom-right-radius: 4px;
+    opacity: 0.8;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animation-delay-300 {
-    animation-delay: 300ms;
   }
 }

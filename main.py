@@ -11,6 +11,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from api.routes import router
+from api.rag_routes import router as rag_router
+from api.auth_routes import router as auth_router
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -50,6 +52,8 @@ app.add_middleware(
 # Routes
 # ---------------------------------------------------------------------------
 app.include_router(router, prefix="/api")
+app.include_router(rag_router, prefix="/api")
+app.include_router(auth_router, prefix="/api")
 
 # ---------------------------------------------------------------------------
 # Static file serving for generated output files
