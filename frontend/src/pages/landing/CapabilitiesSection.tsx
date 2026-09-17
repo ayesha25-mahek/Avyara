@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, Database, Cpu, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Layers, Database, Cpu, ShieldCheck } from 'lucide-react';
 
 export const CapabilitiesSection: React.FC = () => {
   return (

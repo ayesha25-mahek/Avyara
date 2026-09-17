@@ -1,18 +1,10 @@
 import React from 'react';
 import {
   FileText, Linkedin, Presentation, Video, CheckCircle2,
-  BarChart2, Layout, PenTool, ArrowRight
+  BarChart2, Layout, PenTool
 } from 'lucide-react';
 
-interface DeliverablesSectionProps {
-  isAuthenticated: boolean;
-  onPrimaryAction: () => void;
-}
-
-export const DeliverablesSection: React.FC<DeliverablesSectionProps> = ({
-  isAuthenticated,
-  onPrimaryAction,
-}) => {
+export const DeliverablesSection: React.FC = () => {
   return (
     <section
       id="deliverables"

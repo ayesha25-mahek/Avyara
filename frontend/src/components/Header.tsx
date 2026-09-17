@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogIn, LogOut, LayoutDashboard, ArrowRight } from 'lucide-react';
+import { LogIn, LogOut, LayoutDashboard } from 'lucide-react';
 import {
   ROLE_DISPLAY_NAMES, ROLE_BADGE_COLORS,
   type UserProfile

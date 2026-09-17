@@ -36,10 +36,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <CapabilitiesSection />
 
       {/* 3. NEXT SECTION: White / very light gray background */}
-      <DeliverablesSection
-        isAuthenticated={isAuthenticated}
-        onPrimaryAction={handlePrimaryAction}
-      />
+      <DeliverablesSection />
 
       {/* 4. NEXT SECTION: Black background with clean white typography & muted green UI elements */}
       <EnterpriseSection />

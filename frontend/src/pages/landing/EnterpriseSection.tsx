@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Key, Eye, FileCheck, ArrowRight } from 'lucide-react';
+import { Shield, Key, Eye } from 'lucide-react';
 
 export const EnterpriseSection: React.FC = () => {
   return (

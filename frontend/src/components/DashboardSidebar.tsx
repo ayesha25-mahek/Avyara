@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  LayoutDashboard, Users, Cpu, Share2, Activity,
+  Users, Cpu, Share2, Activity,
   Search, Settings, ArrowRight
 } from 'lucide-react';
 import type { UserProfile } from '@/types/auth';
