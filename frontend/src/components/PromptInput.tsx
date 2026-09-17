@@ -45,26 +45,26 @@ Examples:
         />
 
         {/* Telemetry Counter */}
-        <div className="absolute bottom-3 right-3 text-[11px] font-mono px-2 py-0.5 rounded bg-[#08100C] border border-[#1B362C] text-gray-400 pointer-events-none">
-          <span className={value.length > 7000 ? 'text-amber-400' : 'text-[#00E599]'}>
+        <div className="absolute bottom-3 right-3 text-[11px] font-mono px-2 py-0.5 rounded-md bg-[#122E20] border border-[#1E4D36] text-[#9DC4B0] pointer-events-none">
+          <span className={value.length > 7000 ? 'text-amber-400' : 'text-[#74C69D]'}>
             {value.length.toLocaleString()}
           </span>
-          <span className="text-gray-600"> / {MAX_CHARS.toLocaleString()}</span>
+          <span className="text-[#9DC4B0]"> / {MAX_CHARS.toLocaleString()}</span>
         </div>
       </div>
 
       {/* Quick Prompt Presets */}
       {value.length === 0 && !disabled && (
         <div className="flex flex-wrap items-center gap-1.5 pt-1">
-          <span className="text-[11px] font-mono text-gray-400 flex items-center gap-1 mr-1">
-            <Lightbulb className="w-3 h-3 text-[#00E599]" /> Quick presets:
+          <span className="text-[11px] font-mono text-[#9DC4B0] flex items-center gap-1.5 mr-1">
+            <Lightbulb className="w-3.5 h-3.5 text-[#74C69D]" /> Quick presets:
           </span>
           {QUICK_PROMPTS.map((promptText) => (
             <button
               key={promptText}
               type="button"
               onClick={() => onChange(promptText)}
-              className="text-[11px] px-2.5 py-1 rounded-md bg-[#0E1B15] hover:bg-[#00E599]/15 text-gray-300 hover:text-[#00E599] border border-[#1B362C] hover:border-[#00E599]/40 transition-all font-mono"
+              className="text-[11px] px-2.5 py-1 rounded-md bg-[#163827] hover:bg-[#1B4330] text-[#B8D5C6] hover:text-white border border-[#23573E] hover:border-[#2D6E4E] transition-colors font-mono"
             >
               {promptText}
             </button>

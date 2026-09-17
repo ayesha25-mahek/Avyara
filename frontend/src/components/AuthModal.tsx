@@ -55,7 +55,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-in fade-in duration-150">
       <div
-        className="relative w-full max-w-md rounded-md border border-[#142B1F] bg-[#040906] p-6 shadow-2xl font-serif text-gray-200"
+        className="relative w-full max-w-md rounded-md border border-[#1E2F26] bg-[#0E1712] p-6 shadow-2xl font-serif text-gray-200"
         role="dialog"
         aria-modal="true"
       >
@@ -132,7 +132,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               placeholder="e.g. ayeshamahek2509@gmail.com"
               required
               disabled={isLoading}
-              className="w-full px-3.5 py-2.5 rounded-sm bg-[#020604] border border-[#142B1F] text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00D084] transition-colors"
+              className="w-full px-3.5 py-2.5 rounded-sm bg-[#06110A] border-[#1E2F26] text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00D084] transition-colors"
             />
           </div>
 
@@ -160,9 +160,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 placeholder="Enter authorized password"
                 required
                 disabled={isLoading}
-                className="w-full px-3.5 py-2.5 rounded-sm bg-[#020604] border border-[#142B1F] text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00D084] transition-colors pr-10"
+                className="w-full px-3.5 py-2.5 rounded-sm bg-[#06110A] border-[#1E2F26] text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00D084] transition-colors pr-10"
               />
             </div>
+            <div className="mt-2 text-xs"><a href="/reset-password" className="text-gray-400 hover:text-[#00E599]">Forgot password?</a></div>
           </div>
 
           {/* Submit Button */}

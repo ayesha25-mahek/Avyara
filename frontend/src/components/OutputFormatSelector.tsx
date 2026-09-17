@@ -95,20 +95,20 @@ const OutputFormatCard: React.FC<OutputFormatCardProps> = ({ format, selected, o
       disabled={disabled}
       onClick={() => onToggle(format.id)}
       className={cn(
-        'group relative w-full flex items-center gap-2.5 p-2 rounded-md transition-all duration-150 text-left border select-none',
+        'group relative w-full flex items-center gap-2.5 p-2.5 rounded-lg transition-all duration-150 text-left border select-none',
         selected
-          ? 'bg-[#00D084]/15 border-[#00D084]/80 text-white'
-          : 'bg-[#040906] border-[#142B1F] text-gray-300 hover:border-[#00D084]/40 hover:bg-[#07150E]',
+          ? 'bg-[#1B4330] border-[#2D6E4E] text-white shadow-sm'
+          : 'bg-[#0F261B] border-[#1A402D] text-[#B8D5C6] hover:border-[#265E43] hover:bg-[#143324]',
         disabled && 'opacity-40 cursor-not-allowed'
       )}
     >
       {/* Small Checkbox Square */}
       <div
         className={cn(
-          'w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 transition-colors',
+          'w-4 h-4 rounded-md border flex items-center justify-center shrink-0 transition-colors',
           selected
-            ? 'bg-[#00D084] border-[#00D084] text-black'
-            : 'border-[#1E4230] bg-[#08120D] group-hover:border-[#00D084]/60'
+            ? 'bg-[#74C69D] border-[#74C69D] text-black'
+            : 'border-[#265E43] bg-[#0F261B] group-hover:border-[#74C69D]'
         )}
       >
         {selected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -117,13 +117,13 @@ const OutputFormatCard: React.FC<OutputFormatCardProps> = ({ format, selected, o
       {/* Mini Icon */}
       <div
         className={cn(
-          'w-6 h-6 rounded-sm flex items-center justify-center shrink-0 border transition-colors',
+          'w-7 h-7 rounded-md flex items-center justify-center shrink-0 border transition-colors',
           selected
-            ? 'bg-[#00D084]/20 border-[#00D084]/40 text-[#00D084]'
-            : 'bg-[#08120D] border-[#163022] text-gray-400 group-hover:text-white'
+            ? 'bg-[#143324] border-[#265E43] text-[#74C69D]'
+            : 'bg-[#0F261B] border-[#1A402D] text-[#9DC4B0] group-hover:text-white'
         )}
       >
-        <IconComponent className="w-3 h-3" />
+        <IconComponent className="w-3.5 h-3.5" />
       </div>
 
       {/* Label and Info */}
@@ -155,13 +155,13 @@ const OutputFormatSelector: React.FC<OutputFormatSelectorProps> = ({ selected, o
     <div className="space-y-2.5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-sm bg-[#00D084]" />
+          <span className="w-2 h-2 rounded-full bg-[#74C69D]" />
           <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide uppercase font-serif">
             Select Output Formats
           </h3>
         </div>
         {selected.length > 0 && (
-          <span className="text-[11px] font-serif font-semibold px-2 py-0.5 rounded-sm bg-[#00D084]/15 text-[#00D084] border border-[#00D084]/30">
+          <span className="text-[11px] font-serif font-semibold px-2.5 py-0.5 rounded-md bg-[#163827] text-[#74C69D] border border-[#23573E]">
             {selected.length} Selected
           </span>
         )}

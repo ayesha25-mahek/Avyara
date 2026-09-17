@@ -264,19 +264,19 @@ ${prompt || 'Deliverable refinement'}`;
       {/* ─── AVYRA GENERATION STUDIO (protected) ──────────────────────── */}
       {activeView === 'studio' && user && (
         <>
-          {/* Workspace Header Bar */}
-          <div className="border-b border-[#142B1F] bg-[#020503]/80 backdrop-blur-sm">
+          {/* Workspace Header Bar — CapabilitiesSection visual language */}
+          <div className="border-b border-[#1A402D] bg-[#0F261B]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-serif">
                   Avyra Autonomous Studio
                 </h2>
-                <p className="text-sm text-gray-400 mt-1 font-serif">
+                <p className="text-sm text-[#B8D5C6] mt-1 font-serif">
                   Provide your input prompt or source documents below to trigger multi-modal synthesis.
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-sm bg-[#00D084]/15 border border-[#00D084]/30 text-[#00D084] font-serif text-xs font-semibold">
+                <span className="px-3 py-1 rounded-md bg-[#163827] border border-[#23573E] text-[#74C69D] text-xs font-semibold tracking-wide">
                   8 PIPELINES READY
                 </span>
               </div>
@@ -286,27 +286,27 @@ ${prompt || 'Deliverable refinement'}`;
           {/* ───────────────────────────────────────────────────────────── */}
           {/* SECTION A: INPUT INGESTION & SYNTHESIS CONTROLS               */}
           {/* ───────────────────────────────────────────────────────────── */}
-          <section id="input-workspace" className="border-b border-[#142B1F] bg-[#020503] py-10 font-serif">
+          <section id="input-workspace" className="border-b border-[#1A402D] bg-[#0F261B] py-10 font-serif">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#142B1F]">
+              <div className="flex items-center justify-between pb-3 border-b border-[#1A402D]">
                 <div className="flex items-center gap-2">
-                  <Flame className="w-4 h-4 text-[#00D084]" />
+                  <Flame className="w-4 h-4 text-[#74C69D]" />
                   <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider font-serif">
                     1. Input Sources & Autonomous Synthesis Configuration
                   </h3>
                 </div>
-                <span className="text-[11px] font-mono text-gray-400">
+                <span className="text-[11px] font-mono text-[#9DC4B0]">
                   Ready to Ingest
                 </span>
               </div>
 
               {/* Source Content Panel */}
-              <div className="p-5 sm:p-6 rounded-md bg-[#040906] border border-[#142B1F] space-y-4">
+              <div className="p-5 sm:p-6 rounded-xl bg-[#143324] border border-[#1E4D36] space-y-4 hover:border-[#2D6E4E] transition-colors">
                 <div className="flex items-center justify-between">
                   <label className="text-xs sm:text-sm font-bold text-white flex items-center gap-2 font-serif tracking-wide">
                     <span>Source Prompt Context & Document Knowledge Base</span>
                   </label>
-                  <span className="text-[10px] font-serif text-[#00D084] px-2 py-0.5 rounded-sm bg-[#00D084]/10 border border-[#00D084]/20">
+                  <span className="text-[10px] font-semibold text-[#74C69D] px-2.5 py-1 rounded-md bg-[#163827] border border-[#23573E] tracking-wide">
                     MULTI-MODAL INGESTION
                   </span>
                 </div>
@@ -327,7 +327,7 @@ ${prompt || 'Deliverable refinement'}`;
               </div>
 
               {/* Output Format Selection with Small Checkbox Grid */}
-              <div className="p-5 rounded-md bg-[#040906] border border-[#142B1F] space-y-4">
+              <div className="p-5 sm:p-6 rounded-xl bg-[#143324] border border-[#1E4D36] space-y-4 hover:border-[#2D6E4E] transition-colors">
                 <OutputFormatSelector
                   selected={selectedOutputs}
                   onToggle={toggleOutput}
@@ -336,9 +336,11 @@ ${prompt || 'Deliverable refinement'}`;
               </div>
 
               {/* Generation Parameters */}
-              <div className="p-5 rounded-md bg-[#040906] border border-[#142B1F] space-y-4">
-                <label className="text-xs sm:text-sm font-bold text-white flex items-center gap-2 font-serif tracking-wide">
-                  <Zap className="w-4 h-4 text-[#00D084]" />
+              <div className="p-5 sm:p-6 rounded-xl bg-[#143324] border border-[#1E4D36] space-y-4 hover:border-[#2D6E4E] transition-colors">
+                <label className="text-xs sm:text-sm font-bold text-white flex items-center gap-2.5 font-serif tracking-wide">
+                  <div className="w-8 h-8 rounded-lg bg-[#1B4330] border border-[#265E43] flex items-center justify-center text-[#74C69D]">
+                    <Zap className="w-4 h-4" />
+                  </div>
                   <span>Autonomous Model Parameters</span>
                 </label>
                 <GenerationParams
@@ -359,7 +361,7 @@ ${prompt || 'Deliverable refinement'}`;
                       onClick={handleStop}
                       variant="outline"
                       size="lg"
-                      className="flex-1 gap-2 font-serif rounded-md border-white/20 bg-black/40 text-red-400 hover:text-red-300"
+                      className="flex-1 gap-2 font-serif rounded-xl border-red-900/40 bg-red-950/20 text-red-400 hover:text-red-300 hover:bg-red-950/40"
                     >
                       <X className="w-4 h-4 text-red-400" />
                       Abort Execution
@@ -367,9 +369,9 @@ ${prompt || 'Deliverable refinement'}`;
                     <Button
                       size="lg"
                       disabled
-                      className="flex-1 gap-2.5 font-serif text-sm bg-[#06150D] border border-[#00D084]/40 text-white rounded-md"
+                      className="flex-1 gap-2.5 font-serif text-sm bg-[#143324] border border-[#265E43] text-white rounded-xl"
                     >
-                      <Loader2 className="w-4 h-4 animate-spin text-[#00D084]" />
+                      <Loader2 className="w-4 h-4 animate-spin text-[#74C69D]" />
                       Synthesizing Deliverables in Parallel…
                     </Button>
                   </>
@@ -380,7 +382,7 @@ ${prompt || 'Deliverable refinement'}`;
                         variant="outline"
                         size="lg"
                         onClick={handleReset}
-                        className="gap-2 font-serif text-xs px-5 border-[#142B1F] rounded-md bg-[#040906] text-gray-300"
+                        className="gap-2 font-serif text-xs px-5 border-[#1E4D36] rounded-xl bg-[#143324] text-[#B8D5C6] hover:bg-[#1B4330] hover:text-white"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
                         Reset
@@ -389,12 +391,12 @@ ${prompt || 'Deliverable refinement'}`;
                     <button
                       onClick={handleGenerate}
                       disabled={!canGenerate}
-                      className="flex-1 py-3.5 px-6 rounded-md bg-[#00D084] hover:bg-[#05E594] text-black font-bold text-sm sm:text-base font-serif tracking-tight transition-all flex items-center justify-center gap-2.5 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg"
+                      className="flex-1 py-3.5 px-6 rounded-xl bg-[#00C070] hover:bg-[#00A85E] text-black font-bold text-sm sm:text-base font-serif tracking-tight transition-all flex items-center justify-center gap-2.5 disabled:opacity-40 disabled:cursor-not-allowed shadow-md"
                     >
                       <Zap className="w-4 h-4 text-black fill-black" />
                       Execute Avyra Synthesis
                       {selectedOutputs.length > 0 && (
-                        <span className="px-2 py-0.5 rounded-sm bg-black/20 text-xs text-black border border-black/20">
+                        <span className="px-2.5 py-0.5 rounded-md bg-black/20 text-xs text-black border border-black/20 font-semibold">
                           {selectedOutputs.length} Format{selectedOutputs.length > 1 ? 's' : ''} Selected
                         </span>
                       )}
@@ -406,33 +408,33 @@ ${prompt || 'Deliverable refinement'}`;
           </section>
 
           {/* ───────────────────────────────────────────────────────────── */}
-          {/* SECTION B: DEDICATED DARK GREEN OUTPUT & DELIVERABLE WORKSPACE */}
+          {/* SECTION B: WHITE-THEMED DELIVERABLES & OUTPUT WORKSPACE        */}
           {/* ───────────────────────────────────────────────────────────── */}
-          <section id="output-workspace" className="py-12 bg-[#020D06] border-b border-[#143D23] font-serif">
+          <section id="output-workspace" className="py-12 bg-[#F8FAF9] border-b border-[#E1E8E4] font-serif text-[#101F17]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
-              <div className="flex items-center justify-between pb-3 border-b border-[#173F25]">
+              <div className="flex items-center justify-between pb-3 border-b border-[#DCE4E0]">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2.5 h-2.5 rounded-sm bg-[#00D084]" />
-                  <h3 className="text-base sm:text-lg font-bold text-white uppercase tracking-wider font-serif">
-                    2. Synthesized Deliverables & Live Output Previews
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#246346]" />
+                  <h3 className="text-base sm:text-lg font-bold text-[#101F17] uppercase tracking-wider font-serif">
+                    2. Synthesized Deliverables &amp; Live Output Previews
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-[#00D084] bg-[#00D084]/15 px-2.5 py-1 rounded-sm border border-[#00D084]/30">
+                <span className="text-xs font-mono text-[#246346] bg-[#E8F0EC] px-3 py-1 rounded-md border border-[#CFDFD6] font-semibold">
                   {showResults ? `${Object.keys(genState.results).length} READY` : isGenerating ? 'PROCESSING' : 'STANDBY'}
                 </span>
               </div>
 
               {/* Standby State */}
               {genState.status === 'idle' && !showResults && (
-                <div className="rounded-md border border-[#173F25] bg-[#04140A] p-8 sm:p-12 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-md bg-[#00D084]/20 border border-[#00D084]/40 flex items-center justify-center mx-auto text-[#00D084]">
+                <div className="rounded-xl border border-[#DCE4E0] bg-white p-8 sm:p-12 text-center space-y-4 hover:border-[#246346]/40 transition-colors shadow-sm">
+                  <div className="w-12 h-12 rounded-lg bg-[#EAF2EE] border border-[#CFDFD6] flex items-center justify-center mx-auto text-[#246346]">
                     <Cpu className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-base font-bold text-white tracking-wide">
+                    <h4 className="text-base font-bold text-[#101F17] tracking-wide">
                       Neural Deliverable Grid Awaiting Execution
                     </h4>
-                    <p className="text-xs text-gray-400 max-w-md mx-auto leading-relaxed">
+                    <p className="text-xs text-[#567062] max-w-md mx-auto leading-relaxed">
                       Select your target outputs above and click Execute. Synthesized deliverables will populate here side-by-side with full instant previews, download options, and one-click AI revisions.
                     </p>
                   </div>
@@ -441,7 +443,7 @@ ${prompt || 'Deliverable refinement'}`;
 
               {/* Active Pipeline Progress */}
               {isGenerating && (
-                <div className="p-6 rounded-md border border-[#173F25] bg-[#04140A]">
+                <div className="p-6 rounded-xl border border-[#DCE4E0] bg-white shadow-sm">
                   <ProgressPanel
                     progress={genState.progress}
                     completedResults={genState.results}

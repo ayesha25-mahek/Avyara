@@ -55,11 +55,11 @@ const FileUploadZone: React.FC<FileUploadZoneProps> = ({ files, onFilesChange, d
         onDrop={handleDrop}
         onClick={() => !disabled && inputRef.current?.click()}
         className={cn(
-          'relative rounded-md border border-dashed p-6 text-center cursor-pointer transition-all duration-150 group',
+          'relative rounded-lg border border-dashed p-6 text-center cursor-pointer transition-all duration-150 group',
           'overflow-hidden',
           dragging
-            ? 'border-[#00D084] bg-[#00D084]/10'
-            : 'border-[#142B1F] bg-[#040906] hover:border-[#204430] hover:bg-[#06110A]',
+            ? 'border-[#74C69D] bg-[#143324]'
+            : 'border-[#1A402D] bg-[#0F261B] hover:border-[#265E43] hover:bg-[#122E20]',
           disabled && 'opacity-50 cursor-not-allowed'
         )}
       >
@@ -74,34 +74,34 @@ const FileUploadZone: React.FC<FileUploadZoneProps> = ({ files, onFilesChange, d
         />
 
         <div className={cn(
-          'w-10 h-10 rounded-md flex items-center justify-center mx-auto mb-2.5 transition-all duration-150 border',
+          'w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2.5 transition-all duration-150 border',
           dragging
-            ? 'bg-[#00D084]/20 border-[#00D084]'
-            : 'bg-[#08120D] border-[#163022] group-hover:border-[#204430] group-hover:bg-[#0B1812]'
+            ? 'bg-[#1B4330] border-[#74C69D]'
+            : 'bg-[#1B4330] border-[#265E43] group-hover:border-[#2D6E4E]'
         )}>
           <Upload className={cn(
             'w-4 h-4 transition-transform',
-            dragging ? 'text-[#00D084]' : 'text-gray-400 group-hover:text-white'
+            dragging ? 'text-[#74C69D]' : 'text-[#9DC4B0] group-hover:text-white'
           )} />
         </div>
 
-        <p className="text-sm font-semibold text-gray-200 mb-1 tracking-tight font-serif">
+        <p className="text-sm font-semibold text-white mb-1 tracking-tight font-serif">
           {dragging ? 'Drop files to ingest into neural pipeline' : 'Drag & drop source documents or media'}
         </p>
-        <p className="text-xs text-gray-400 mb-2 font-serif">
+        <p className="text-xs text-[#9DC4B0] mb-2 font-serif">
           or click to browse local files
         </p>
 
         {/* Formats support pill tags */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] font-serif text-gray-400">
-          <span className="px-2 py-0.5 rounded-sm bg-[#08120D] border border-[#142B1F] flex items-center gap-1">
-            <FileText className="w-3 h-3 text-[#00D084]" /> PDF / DOCX / PPTX / TXT
+        <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] font-serif text-[#B8D5C6]">
+          <span className="px-2.5 py-0.5 rounded-md bg-[#163827] border border-[#23573E] flex items-center gap-1.5">
+            <FileText className="w-3 h-3 text-[#74C69D]" /> PDF / DOCX / PPTX / TXT
           </span>
-          <span className="px-2 py-0.5 rounded-sm bg-[#08120D] border border-[#142B1F] flex items-center gap-1">
-            <ImageIcon className="w-3 h-3 text-[#00D084]" /> PNG / JPG / WEBP
+          <span className="px-2.5 py-0.5 rounded-md bg-[#163827] border border-[#23573E] flex items-center gap-1.5">
+            <ImageIcon className="w-3 h-3 text-[#74C69D]" /> PNG / JPG / WEBP
           </span>
-          <span className="px-2 py-0.5 rounded-sm bg-[#08120D] border border-[#142B1F] flex items-center gap-1">
-            <Film className="w-3 h-3 text-[#00D084]" /> MP4 / MOV
+          <span className="px-2.5 py-0.5 rounded-md bg-[#163827] border border-[#23573E] flex items-center gap-1.5">
+            <Film className="w-3 h-3 text-[#74C69D]" /> MP4 / MOV
           </span>
         </div>
       </div>

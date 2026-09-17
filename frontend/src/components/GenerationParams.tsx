@@ -57,38 +57,38 @@ const GenerationParams: React.FC<GenerationParamsProps> = ({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="rounded-md border border-[#142B1F] bg-[#040906] overflow-hidden transition-all duration-150">
+    <div className="rounded-lg border border-[#1A402D] bg-[#0F261B] overflow-hidden transition-all duration-150">
       {/* Header */}
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between px-4 py-3 bg-[#06110A] hover:bg-[#09170E] transition-colors"
+        className="w-full flex items-center justify-between px-4 py-3 bg-[#122E20] hover:bg-[#163827] transition-colors"
       >
         <div className="flex items-center gap-2.5">
-          <div className="w-5 h-5 rounded-sm bg-[#00D084]/15 flex items-center justify-center border border-[#00D084]/30">
-            <SlidersHorizontal className="w-3 h-3 text-[#00D084]" />
+          <div className="w-6 h-6 rounded-md bg-[#1B4330] flex items-center justify-center border border-[#265E43]">
+            <SlidersHorizontal className="w-3 h-3 text-[#74C69D]" />
           </div>
-          <span className="text-xs sm:text-sm font-bold text-gray-200 font-serif tracking-wide">
+          <span className="text-xs sm:text-sm font-semibold text-white font-serif tracking-wide">
             Execution Parameters
           </span>
-          <span className="text-xs font-serif text-gray-400 hidden sm:inline-block border-l border-[#142B1F] pl-2">
+          <span className="text-xs font-serif text-[#9DC4B0] hidden sm:inline-block border-l border-[#1E4D36] pl-2.5">
             {language} · {tone} · {targetAudience}
           </span>
         </div>
-        <div className="flex items-center gap-2 text-gray-400 font-serif">
-          <span className="text-xs text-[#00D084]">
+        <div className="flex items-center gap-2 text-[#9DC4B0] font-serif">
+          <span className="text-xs text-[#74C69D] font-medium">
             {expanded ? 'Hide Config' : 'Customize Options'}
           </span>
           {expanded
-            ? <ChevronUp className="w-3.5 h-3.5 text-[#00D084]" />
-            : <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
+            ? <ChevronUp className="w-3.5 h-3.5 text-[#74C69D]" />
+            : <ChevronDown className="w-3.5 h-3.5 text-[#9DC4B0]" />
           }
         </div>
       </button>
 
       {/* Content */}
       {expanded && (
-        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-3.5 bg-[#030704] border-t border-[#142B1F] animate-in fade-in duration-150">
+        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-3.5 bg-[#0F261B] border-t border-[#1A402D] animate-in fade-in duration-150">
           <Select
             label="Target Language"
             value={language}

@@ -5,46 +5,46 @@ export const PRCampaignsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-bold text-white tracking-tight font-serif">PR & Campaign Operations</h2>
-        <p className="text-xs text-gray-400 font-serif">
-          Manage target audience personas, brand tone presets, and multi-channel campaign strategies.
+        <h2 className="text-lg font-semibold text-white tracking-tight">PR & Campaigns</h2>
+        <p className="text-xs text-[#9EB3A8]">
+          Configure target audience personas and authoritative brand tone guidelines.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="p-6 rounded-md border border-[#142B1F] bg-[#040906] space-y-4">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2 font-serif">
-            <Share2 className="w-4 h-4 text-[#00D084]" />
-            Active Audience Personas
+        <div className="p-6 rounded-xl border border-[#1E2F26] bg-[#0E1712] space-y-4">
+          <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+            <Share2 className="w-4 h-4 text-[#52B788]" />
+            Audience Segments
           </h3>
-          <div className="space-y-2 text-xs font-serif">
+          <div className="space-y-2 text-xs">
             {[
-              { role: 'C-Suite Executives', focus: 'ROI, Strategy, Risk Reduction' },
-              { role: 'Technical Practitioners', focus: 'Architecture, APIs, SOC-2' },
-              { role: 'Institutional Investors', focus: 'Scalability, Growth, Moat' },
+              { role: 'C-Suite Executives', focus: 'Strategic ROI, Risk Governance, Board Impact' },
+              { role: 'Technical Practitioners', focus: 'API Specifications, SOC-2, Data Grounding' },
+              { role: 'Institutional Investors', focus: 'Scale Economics, Competitive Moat, Metrics' },
             ].map((p, i) => (
-              <div key={i} className="p-3 rounded-sm bg-[#06110A] border border-[#142B1F] flex justify-between items-center">
-                <span className="font-semibold text-white">{p.role}</span>
-                <span className="text-gray-400 text-[11px]">{p.focus}</span>
+              <div key={i} className="p-3 rounded-lg bg-[#111C16] border border-[#1A2820] flex justify-between items-center">
+                <span className="font-medium text-white">{p.role}</span>
+                <span className="text-[#8CA396] text-[11px]">{p.focus}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="p-6 rounded-md border border-[#142B1F] bg-[#040906] space-y-4">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2 font-serif">
-            <FileText className="w-4 h-4 text-[#00D084]" />
-            Brand Tone & Voice Guidelines
+        <div className="p-6 rounded-xl border border-[#1E2F26] bg-[#0E1712] space-y-4">
+          <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+            <FileText className="w-4 h-4 text-[#52B788]" />
+            Tone & Framing Directives
           </h3>
-          <div className="space-y-2 text-xs font-serif">
+          <div className="space-y-2 text-xs">
             {[
-              { tone: 'Authoritative & Precision', desc: 'Used for Executive Summaries and Advisories' },
-              { tone: 'Engaging & Viral', desc: 'Optimized for LinkedIn Thought Leadership and Twitter' },
-              { tone: 'Visual & Structured', desc: 'Tuned for Pitch Decks and Slide Outlines' },
+              { tone: 'Executive & Authoritative', desc: 'Applied to Briefs, Summaries, and Advisories' },
+              { tone: 'Analytical & Structured', desc: 'Tuned for Pitch Decks and Slide Outlines' },
+              { tone: 'Persuasive & Engaging', desc: 'Optimized for Thought Leadership on LinkedIn & X' },
             ].map((t, i) => (
-              <div key={i} className="p-3 rounded-sm bg-[#06110A] border border-[#142B1F] flex justify-between items-center">
-                <span className="font-semibold text-white">{t.tone}</span>
-                <span className="text-gray-400 text-[11px]">{t.desc}</span>
+              <div key={i} className="p-3 rounded-lg bg-[#111C16] border border-[#1A2820] flex justify-between items-center">
+                <span className="font-medium text-white">{t.tone}</span>
+                <span className="text-[#8CA396] text-[11px]">{t.desc}</span>
               </div>
             ))}
           </div>

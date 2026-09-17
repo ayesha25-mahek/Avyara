@@ -26,26 +26,26 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({ progress, completedResult
   const message = progress?.message ?? 'Autonomous Pipeline Active…';
 
   return (
-    <div className="relative rounded-md border border-[#142B1F] bg-[#040906] p-5 space-y-4 font-serif">
+    <div className="relative rounded-xl border border-[#1A402D] bg-[#0F261B] p-5 space-y-4 font-serif">
       {/* Stage indicator & Telemetry */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-sm bg-[#00D084]/15 border border-[#00D084]/30 flex items-center justify-center">
-            <StageIcon className="w-4 h-4 text-[#00D084]" />
+          <div className="w-10 h-10 rounded-lg bg-[#1B4330] border border-[#265E43] flex items-center justify-center text-[#74C69D]">
+            <StageIcon className="w-4 h-4 text-[#74C69D]" />
           </div>
           <div>
-            <p className="text-xs sm:text-sm font-bold text-white font-serif tracking-tight">{message}</p>
+            <p className="text-xs sm:text-sm font-semibold text-white font-serif tracking-tight">{message}</p>
             <div className="flex items-center gap-2 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-sm bg-[#00D084]" />
-              <span className="text-[10px] font-mono text-gray-400 tracking-wider uppercase">
-                {stage === 'done' ? 'ALL DELIVERABLES ASSEMBLED' : `AVRA PLAYBOOK // ${stage.toUpperCase()}`}
+              <span className="w-1.5 h-1.5 rounded-full bg-[#74C69D]" />
+              <span className="text-[10px] font-mono text-[#9DC4B0] tracking-wider uppercase">
+                {stage === 'done' ? 'ALL DELIVERABLES ASSEMBLED' : `AVYRA PLAYBOOK // ${stage.toUpperCase()}`}
               </span>
             </div>
           </div>
         </div>
 
         <div className="text-right hidden sm:block">
-          <span className="text-lg font-mono font-bold text-[#00D084]">
+          <span className="text-lg font-mono font-bold text-[#74C69D]">
             {percent}%
           </span>
         </div>
@@ -54,9 +54,9 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({ progress, completedResult
       {/* High-tech Progress bar */}
       <div className="space-y-1.5">
         <Progress value={percent} />
-        <div className="flex justify-between text-[11px] font-mono text-gray-400">
-          <span className="flex items-center gap-1">
-            <Activity className="w-3 h-3 text-[#00E599]" /> Neural Inference Stream
+        <div className="flex justify-between text-[11px] font-mono text-[#9DC4B0]">
+          <span className="flex items-center gap-1.5">
+            <Activity className="w-3.5 h-3.5 text-[#74C69D]" /> Neural Inference Stream
           </span>
           <span className="text-white font-bold">{percent}% COMPLETED</span>
         </div>
@@ -64,8 +64,8 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({ progress, completedResult
 
       {/* Neural Pipeline Output Stage Status List */}
       {selectedOutputs.length > 0 && (
-        <div className="space-y-2 pt-1 border-t border-[#1B362C]/60">
-          <div className="flex items-center justify-between text-[10px] font-mono text-gray-400 uppercase tracking-widest px-1">
+        <div className="space-y-2 pt-2 border-t border-[#1A402D]">
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#9DC4B0] uppercase tracking-widest px-1">
             <span>Target Pipeline Task</span>
             <span>Execution Status</span>
           </div>
@@ -81,28 +81,28 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({ progress, completedResult
               <div
                 key={outputId}
                 className={cn(
-                  'flex items-center justify-between px-3.5 py-2 rounded-sm text-xs font-serif transition-all duration-150',
-                  isDone && !isError ? 'bg-[#00D084]/10 border border-[#00D084]/30 text-[#00D084]' :
-                  isError ? 'bg-red-500/10 border border-red-500/30 text-red-300' :
-                  isCurrent ? 'bg-[#00D084]/15 border border-[#00D084]/40 text-white' :
-                  'bg-[#060D09] border border-[#142B1F] text-gray-400'
+                  'flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-serif transition-colors duration-150',
+                  isDone && !isError ? 'bg-[#163827] border border-[#23573E] text-[#74C69D]' :
+                  isError ? 'bg-red-950/30 border border-red-800/40 text-red-300' :
+                  isCurrent ? 'bg-[#143324] border border-[#2D6E4E] text-white' :
+                  'bg-[#0C1F16] border border-[#1A402D] text-[#9DC4B0]'
                 )}
               >
                 <div className="flex items-center gap-2.5">
                   {isDone && !isError ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00D084] shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#74C69D] shrink-0" />
                   ) : isCurrent ? (
-                    <Loader2 className="w-3.5 h-3.5 text-[#00D084] animate-spin shrink-0" />
+                    <Loader2 className="w-3.5 h-3.5 text-[#74C69D] animate-spin shrink-0" />
                   ) : (
-                    <div className={cn('w-3.5 h-3.5 rounded-sm border flex items-center justify-center text-[9px] shrink-0',
-                      isError ? 'border-red-400 text-red-400' : 'border-white/20 text-gray-600'
+                    <div className={cn('w-3.5 h-3.5 rounded-md border flex items-center justify-center text-[9px] shrink-0',
+                      isError ? 'border-red-400 text-red-400' : 'border-[#265E43] text-[#9DC4B0]'
                     )}>
                       •
                     </div>
                   )}
                   <span className={cn('font-semibold font-serif text-xs',
                     isDone && !isError ? 'text-white' :
-                    isCurrent ? 'text-white' : 'text-gray-400'
+                    isCurrent ? 'text-white' : 'text-[#9DC4B0]'
                   )}>
                     {meta?.label ?? outputId}
                   </span>
@@ -110,9 +110,9 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({ progress, completedResult
 
                 <div className="text-[11px] font-mono">
                   {isError && <span className="text-red-400 font-bold">FAILED</span>}
-                  {isDone && !isError && <span className="text-[#00E599] font-bold">READY</span>}
-                  {isCurrent && <span className="text-[#00E599] font-bold animate-pulse">PROCESSING…</span>}
-                  {!isDone && !isCurrent && !isError && <span className="text-gray-600">QUEUED</span>}
+                  {isDone && !isError && <span className="text-[#74C69D] font-bold">READY</span>}
+                  {isCurrent && <span className="text-[#74C69D] font-bold animate-pulse">PROCESSING…</span>}
+                  {!isDone && !isCurrent && !isError && <span className="text-[#688A78]">QUEUED</span>}
                 </div>
               </div>
             );

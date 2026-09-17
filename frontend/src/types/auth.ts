@@ -38,29 +38,9 @@ export const ROLE_DISPLAY_NAMES: Record<UserRole, string> = {
 };
 
 export const ROLE_BADGE_COLORS: Record<UserRole, { bg: string; text: string; border: string }> = {
-  super_admin: {
-    bg: 'bg-emerald-500/15',
-    text: 'text-emerald-300',
-    border: 'border-emerald-500/40',
-  },
-  technical_lead: {
-    bg: 'bg-cyan-500/15',
-    text: 'text-cyan-300',
-    border: 'border-cyan-500/40',
-  },
-  pr_lead: {
-    bg: 'bg-purple-500/15',
-    text: 'text-purple-300',
-    border: 'border-purple-500/40',
-  },
-  technical_team: {
-    bg: 'bg-teal-500/15',
-    text: 'text-teal-300',
-    border: 'border-teal-500/40',
-  },
-  pr_team: {
-    bg: 'bg-indigo-500/15',
-    text: 'text-indigo-300',
-    border: 'border-indigo-500/40',
-  },
+  super_admin: { bg: 'bg-[#0E1B15]', text: 'text-[#52B788]', border: 'border-[#1E2F26]' },
+  technical_lead: { bg: 'bg-[#0E1B15]', text: 'text-[#52B788]', border: 'border-[#1E2F26]' },
+  pr_lead: { bg: 'bg-[#0E1B15]', text: 'text-[#52B788]', border: 'border-[#1E2F26]' },
+  technical_team: { bg: 'bg-[#0E1B15]', text: 'text-[#52B788]', border: 'border-[#1E2F26]' },
+  pr_team: { bg: 'bg-[#0E1B15]', text: 'text-[#52B788]', border: 'border-[#1E2F26]' },
 };

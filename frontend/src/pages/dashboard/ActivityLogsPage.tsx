@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Activity, RefreshCw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { fetchActivityLogs } from '@/lib/authApi';
 import type { ActivityLog } from '@/types/auth';
 
@@ -28,40 +27,39 @@ export const ActivityLogsPage: React.FC = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-white tracking-tight font-serif">System Activity & Audit Trail</h2>
-          <p className="text-xs text-gray-400 font-serif">
-            Real-time record of logins, generation requests, deliverable revisions, and permission events.
+          <h2 className="text-lg font-semibold text-white tracking-tight">System Audit Trail</h2>
+          <p className="text-xs text-[#9EB3A8]">
+            Immutable record of logins, generation pipelines, and deliverable revision events.
           </p>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
+        <button
+          type="button"
           onClick={loadActivities}
-          className="gap-1.5 text-xs rounded-sm border-[#142B1F] bg-[#06110A]"
+          className="figma-btn-secondary text-xs py-1.5 px-3 rounded-lg"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
-          Refresh Logs
-        </Button>
+          Refresh
+        </button>
       </div>
 
-      <div className="rounded-md border border-[#142B1F] bg-[#040906] p-4 space-y-3 font-mono text-xs">
+      <div className="rounded-xl border border-[#1E2F26] bg-[#0E1712] p-4 space-y-2 font-mono text-xs">
         {activities.length === 0 ? (
-          <div className="py-10 text-center">
-            <Activity className="w-8 h-8 mx-auto mb-3 text-gray-600" />
-            <p className="text-gray-500 font-serif">No recent activity logged.</p>
+          <div className="py-12 text-center text-[#6B8276] font-sans">
+            <Activity className="w-8 h-8 mx-auto mb-2 text-[#2D4338]" />
+            <p>No recent activity records found.</p>
           </div>
         ) : (
           activities.map((a) => (
             <div
               key={a.id}
-              className="p-3 rounded-sm bg-[#06110A] border border-[#142B1F] flex flex-wrap items-center justify-between gap-2"
+              className="p-3 rounded-lg bg-[#111C16] border border-[#1A2820] flex flex-wrap items-center justify-between gap-2"
             >
-              <div className="flex items-center gap-3">
-                <span className="text-[#00D084] font-bold">[{a.action}]</span>
-                <span className="text-gray-200">{a.actor_email}</span>
-                <span className="text-gray-500">({a.actor_role})</span>
+              <div className="flex items-center gap-2.5">
+                <span className="text-[#52B788] font-bold">[{a.action}]</span>
+                <span className="text-white">{a.actor_email}</span>
+                <span className="text-[#6B8276]">({a.actor_role})</span>
               </div>
-              <span className="text-gray-500 text-[11px]">
+              <span className="text-[#7A9386] text-[11px]">
                 {new Date(a.timestamp).toLocaleString()}
               </span>
             </div>

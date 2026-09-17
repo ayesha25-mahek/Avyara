@@ -13,10 +13,12 @@ export const LineCanvasAnimation: React.FC<LineCanvasAnimationProps> = ({ classN
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
     let width = 0;
     let height = 0;
-    let t = 0;
+    let animFrameId: number;
+    let progress = 0;
+    const DURATION = 900;
+    let startTime: number | null = null;
 
     const handleResize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -28,89 +30,57 @@ export const LineCanvasAnimation: React.FC<LineCanvasAnimationProps> = ({ classN
       ctx.scale(dpr, dpr);
     };
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
-    // Number of oscillating ribbon lines
-    const lineCount = 12;
-
-    const render = () => {
-      t += 0.008;
+    const draw = (p: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Perspective Background Technical Grid Lines (Pleasant, dark, muted)
-      ctx.lineWidth = 1;
-      const gridStep = 48;
-      const gridOffset = (t * 12) % gridStep;
+      // 6x broadness: 1 green, 1 black of equal height alternating
+      // Stripe thickness ~20px green, ~20px black gap
+      const stripeHeight = 20;
+      const gapHeight = 20;
+      const totalBlock = stripeHeight + gapHeight;
+      const stripeCount = Math.floor(height / totalBlock) + 1;
+      const rightStart = width * 0.38;
 
-      // Vertical grid lines
-      ctx.strokeStyle = 'rgba(11, 40, 24, 0.35)';
-      for (let x = 0; x < width; x += gridStep) {
+      for (let i = 0; i < stripeCount; i++) {
+        const y = i * totalBlock + stripeHeight / 2;
+
+        const fullLength = width * (0.45 + 0.35 * Math.sin((i / stripeCount) * Math.PI));
+        const delay = (i / stripeCount) * 0.35;
+        const localP = Math.max(0, Math.min(1, (p - delay) / (1 - delay)));
+        const stripeLength = fullLength * easeOut(localP);
+
+        const x1 = rightStart;
+        const x2 = Math.min(width, rightStart + stripeLength);
+
+        ctx.strokeStyle = 'rgba(34, 197, 94, 0.45)';
+        ctx.lineWidth = stripeHeight;
+        ctx.lineCap = 'butt';
         ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
+        ctx.moveTo(x1, y);
+        ctx.lineTo(x2, y);
         ctx.stroke();
       }
-
-      // Horizontal subtle moving grid lines
-      ctx.strokeStyle = 'rgba(11, 40, 24, 0.25)';
-      for (let y = gridOffset; y < height; y += gridStep) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
-
-      // 2. Multi-layered oscillating dark-green & black wave lines
-      // Carefully tuned line styles: NO glow, NO bloom, strictly muted emerald & dark forest tones
-      const step = 6;
-      for (let i = 0; i < lineCount; i++) {
-        const progress = i / lineCount;
-        const baseY = height * 0.45 + (i - lineCount / 2) * 22;
-
-        // Gradient line tones between dark forest obsidian and calm technical green
-        const alpha = 0.12 + Math.sin(t + i) * 0.05 + progress * 0.15;
-        const greenTone = Math.floor(130 + progress * 70);
-        ctx.strokeStyle = `rgba(0, ${greenTone}, ${Math.floor(greenTone * 0.65)}, ${alpha.toFixed(3)})`;
-        ctx.lineWidth = i % 3 === 0 ? 1.5 : 1;
-
-        ctx.beginPath();
-        for (let x = 0; x <= width; x += step) {
-          // Combination of 3 harmonized sinusoids creates fluid, organic motion
-          const wave1 = Math.sin(x * 0.004 + t * 1.2 + i * 0.35) * 45;
-          const wave2 = Math.cos(x * 0.008 - t * 0.8 + i * 0.2) * 24;
-          const wave3 = Math.sin((x + i * 50) * 0.002 + t * 0.5) * 15;
-          const y = baseY + wave1 + wave2 + wave3;
-
-          if (x === 0) {
-            ctx.moveTo(x, y);
-          } else {
-            ctx.lineTo(x, y);
-          }
-        }
-        ctx.stroke();
-      }
-
-      // 3. Diagonal intersection scan lines (subtle tech telemetry aesthetic)
-      ctx.strokeStyle = 'rgba(0, 208, 132, 0.06)';
-      ctx.lineWidth = 1;
-      const diagCount = 6;
-      for (let d = 0; d < diagCount; d++) {
-        const diagX = ((d * (width / diagCount) + t * 25) % (width * 1.5)) - width * 0.25;
-        ctx.beginPath();
-        ctx.moveTo(diagX, 0);
-        ctx.lineTo(diagX + height * 0.8, height);
-        ctx.stroke();
-      }
-
-      animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      progress = Math.min(elapsed / DURATION, 1);
+      draw(progress);
+      if (progress < 1) {
+        animFrameId = requestAnimationFrame(animate);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    animFrameId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animFrameId);
     };
   }, []);
 
@@ -118,7 +88,6 @@ export const LineCanvasAnimation: React.FC<LineCanvasAnimationProps> = ({ classN
     <canvas
       ref={canvasRef}
       className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
-      style={{ opacity: 0.95 }}
     />
   );
 };

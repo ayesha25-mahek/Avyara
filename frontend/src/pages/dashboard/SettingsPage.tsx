@@ -24,7 +24,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onSignOut }) =
       </div>
 
       {/* Account Info */}
-      <div className="p-6 rounded-md border border-[#142B1F] bg-[#040906] space-y-4">
+      <div className="p-6 rounded-md border border-[#1E2F26] bg-[#0E1712] space-y-4">
         <h3 className="text-sm font-bold text-white flex items-center gap-2 font-serif">
           <User className="w-4 h-4 text-[#00D084]" />
           Account Information

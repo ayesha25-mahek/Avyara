@@ -8,165 +8,82 @@
   }
 
   html {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #040806;
-    color: #E8F5EE;
+    background-color: #0A0F0D;
+    color: #F0F5F2;
+    scroll-behavior: smooth;
   }
 
   body {
-    background-color: #040806;
-    color: #E8F5EE;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: #0A0F0D;
+    color: #F0F5F2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* Custom high-tech scrollbar */
+  /* Clean Figma Minimal Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #08100C;
+    background: #0A0F0D;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1B362C;
+    background: #1C2822;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #00E599;
+    background: #2D4338;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: #1B362C #08100C;
+    scrollbar-color: #1C2822 #0A0F0D;
   }
 }
 
 @layer components {
-  /* Visible Technical Cyber Grid for Hero Section (Image 1 SANS / Cortex style) */
-  .hero-cortex-grid {
-    background-image: 
-      linear-gradient(to right, rgba(0, 208, 132, 0.12) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 208, 132, 0.12) 1px, transparent 1px);
-    background-size: 32px 32px;
+  /* Figma Enterprise Typography */
+  .font-brand {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
-  /* Authentic Palo Alto Cortex Subtle Dark Gradient (Pleasant, matte, no blinding lights) */
-  .cortex-hero-bg {
-    background: linear-gradient(90deg, #000000 0%, #010A05 45%, #04190F 80%, #02120A 100%);
+  /* Figma SaaS Buttons */
+  .figma-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#2E7D56] text-white font-medium text-sm transition-colors duration-150 hover:bg-[#256847] active:bg-[#1E543A] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm;
   }
 
-  /* User's Exact "Avyra" Brush/Street Font Style from Image 3 */
-  .font-agentic {
-    font-family: 'Sedgwick Ave Display', 'Permanent Marker', cursive, sans-serif;
-    font-style: italic;
-    font-weight: 900;
-    background: linear-gradient(180deg, #5EEAD4 0%, #4ADE80 30%, #EAB308 70%, #EA580C 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    letter-spacing: 0.04em;
-    transform: skewX(-7deg) rotate(-1deg);
+  .figma-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-[#22332A] bg-[#111A15] text-[#DCE6E0] font-medium text-sm transition-colors duration-150 hover:bg-[#18261F] hover:text-white hover:border-[#2D4338] active:bg-[#111A15] disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
-  /* Exact Palo Alto Cortex Pill Buttons (Images 1 & 2) */
-  .btn-pill-green {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#00D084] text-black font-bold text-sm tracking-tight transition-all duration-150 hover:bg-[#05E594] hover:scale-[1.01] active:scale-[0.98];
+  .figma-btn-light {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#1B4D36] text-white font-medium text-sm transition-colors duration-150 hover:bg-[#246346] active:bg-[#143B29] shadow-sm;
   }
 
-  /* SANS Analyst Report Booklet Card from Image 1 (Pleasant, Decreased Curves) */
-  .sans-report-card {
-    background: linear-gradient(145deg, #05140E 0%, #020805 100%);
-    border: 1px solid #143524;
+  .figma-btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-[#D5E0DA] bg-white text-[#1E2D24] font-medium text-sm transition-colors duration-150 hover:bg-[#F0F5F2] hover:border-[#B8CCC1];
   }
 
-  /* Figma-grade Clean Matte Cards (Subtle Decreased Curves) */
-  .figma-card {
-    @apply bg-[#040805] border border-[#11291C] rounded-md transition-all duration-150;
+  /* Figma SaaS Card Styles */
+  .figma-card-dark {
+    @apply rounded-xl border border-[#1A2820] bg-[#0E1712] p-6 transition-colors duration-150;
   }
 
-  .figma-card-interactive {
-    @apply bg-[#050B07] border border-[#11291C] hover:border-[#00D084]/40 hover:bg-[#07130C] rounded-md transition-all duration-150;
+  .figma-card-green {
+    @apply rounded-xl border border-[#244A37] bg-[#142E22] p-6 transition-colors duration-150;
   }
 
-  /* Cortex Clean Card with decreased curves */
-  .cortex-card {
-    @apply bg-[#040805] border border-[#11291C] rounded-md transition-all duration-150;
-  }
-
-  .cortex-card-interactive {
-    @apply bg-[#050B07] border border-[#11291C] hover:border-[#00D084]/40 hover:bg-[#07130C] rounded-md transition-all duration-150;
-  }
-
-  /* Cortex Gradient Text */
-  .gradient-cortex {
-    @apply bg-gradient-to-r from-white via-[#E8F5EE] to-gray-300 bg-clip-text text-transparent;
-  }
-
-  .gradient-cortex-green {
-    @apply bg-gradient-to-r from-[#00D084] to-[#10B981] bg-clip-text text-transparent;
-  }
-
-  /* Cortex Primary Button */
-  .btn-cortex {
-    @apply relative overflow-hidden bg-[#071F14] text-[#E8F5EE] hover:text-white font-semibold shadow-sm transition-all duration-200 border border-[#143D2A] hover:border-[#00D084]/60 hover:bg-[#0B2A1C];
-  }
-
-  /* Pleasant Selected Border for Cards */
-  .cortex-selected-border {
-    border-color: #00D084 !important;
-    background: #06170F !important;
-    box-shadow: 0 0 10px rgba(0, 208, 132, 0.12);
-  }
-
-  /* Subtle Status indicators (No blinding neon glow) */
-  .status-dot-cortex {
-    @apply w-2 h-2 rounded-full bg-[#00D084];
-  }
-
-  .status-dot-orange,
-  .status-dot-alert {
-    @apply w-2 h-2 rounded-full bg-[#EAB308];
-  }
-
-  /* Precision HUD brackets */
-  .hud-bracket {
-    position: relative;
-  }
-  .hud-bracket::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid #00E599;
-    border-left: 2px solid #00E599;
-    border-top-left-radius: 4px;
-    opacity: 0.8;
-  }
-  .hud-bracket::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 8px;
-    height: 8px;
-    border-bottom: 2px solid #06B6D4;
-    border-right: 2px solid #06B6D4;
-    border-bottom-right-radius: 4px;
-    opacity: 0.8;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .figma-card-light {
+    @apply rounded-xl border border-[#E1E8E4] bg-white p-6 transition-colors duration-150;
   }
 }

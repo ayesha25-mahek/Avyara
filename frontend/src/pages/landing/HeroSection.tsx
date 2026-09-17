@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  ArrowRight, ShieldCheck, Lock, FileText, Database,
-  Cpu, ChevronRight
-} from 'lucide-react';
+import { ArrowRight, ShieldCheck, Lock, FileText, Database, Cpu, CheckCircle2, ChevronRight } from 'lucide-react';
 import { LineCanvasAnimation } from '@/components/LineCanvasAnimation';
 
 interface HeroSectionProps {
@@ -17,113 +14,136 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       id="overview"
-      className="relative overflow-hidden bg-black border-b border-[#1a1a1a] min-h-[90vh] flex items-center"
+      className="relative overflow-hidden bg-black border-b border-[#1A2820]"
+      style={{ minHeight: '520px' }}
     >
-      {/* Subtle Canvas Line Animation */}
+      {/* Horizontal stripe lines — right-side only via canvas */}
       <LineCanvasAnimation />
 
-      {/* Ambient Vignette Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 py-20 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: pure black, text only */}
+          <div className="lg:col-span-7 space-y-7">
 
-          {/* Left Content (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6 relative pl-4 sm:pl-7 border-l-2 border-white/20">
-            <div className="absolute -left-[2px] top-0 w-[2px] h-20 bg-[#00D084]" />
+            {/* Brand word — exact font & gradient colors from AGENTIC image 2 */}
+            <div>
+              <span
+                className="block font-black italic leading-none select-none tracking-tighter uppercase"
+                style={{
+                  fontSize: 'clamp(72px, 12vw, 130px)',
+                  fontFamily: '"Impact", "Arial Black", sans-serif',
+                  background: 'linear-gradient(180deg, #4ADE80 0%, #22C55E 35%, #F59E0B 75%, #F97316 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  transform: 'skewX(-6deg)',
+                }}
+              >
+                AVYRA
+              </span>
+            </div>
 
-            {/* Main Headline */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] font-serif">
-                SOARing above the rest with{' '}
-                <span className="font-agentic text-4xl sm:text-5xl lg:text-6xl">
-                  Avyra
-                </span>.
+            {/* Main Headline — bold, dark-green background section feel from image 3 */}
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-white tracking-tight leading-[1.1]">
+                Autonomous content<br />synthesis for<br />enterprise teams.
               </h1>
-              <p className="text-base sm:text-lg text-gray-300 font-normal leading-relaxed max-w-xl font-serif">
-                SANS independent review: <span className="text-white font-semibold">Avyra</span> autonomous multi-modal content synthesis, Supabase semantic vector grounding, and enterprise executive intelligence.
+
+              {/* Subtitle in Times New Roman — "mathematical factuality" line */}
+              <p
+                className="text-base sm:text-lg text-[#9EB3A8] leading-relaxed max-w-xl"
+                style={{ fontFamily: '"Times New Roman", Times, serif' }}
+              >
+                Avyra connects multi-modal document extraction with Supabase vector grounding to synthesize production-ready briefs, presentations, and campaigns with mathematical factuality.
               </p>
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
+                type="button"
                 onClick={onPrimaryAction}
-                className="px-6 py-3 rounded-full bg-[#00D084] text-black font-bold text-sm tracking-tight hover:bg-[#05E594] transition-all font-serif flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg bg-[#00C070] hover:bg-[#00A85E] text-black transition-colors"
               >
-                <span>{isAuthenticated ? 'Enter Avyra Studio' : 'Launch Workspace'}</span>
+                <span>{isAuthenticated ? 'Open Studio Workspace' : 'Get Started with Avyra'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <a
                 href="#capabilities"
-                className="px-6 py-3 rounded-full border border-[#222] bg-[#0a0a0a] text-gray-300 hover:text-white hover:border-[#00D084]/40 transition-all text-sm font-serif flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold rounded-lg border border-[#2A3F33] text-[#9EB3A8] hover:text-white hover:border-[#3A5545] transition-colors"
               >
-                <span>Explore Capabilities</span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
+                <span>Platform Architecture</span>
+                <ChevronRight className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Security & Verification Pill */}
-            <div className="flex items-center gap-4 text-xs font-serif text-gray-400 pt-2">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#00D084]" />
-                <span>SOC-2 Certified Pipeline</span>
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-6 pt-4 text-xs text-[#7A9386] border-t border-[#16231C]">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#52B788]" />
+                <span>SOC-2 Type II Certified</span>
               </div>
-              <span className="text-gray-700">|</span>
-              <div className="flex items-center gap-1.5">
-                <Lock className="w-4 h-4 text-[#00D084]" />
-                <span>Role-Based Supabase Access</span>
+              <div className="flex items-center gap-2">
+                <Lock className="w-4 h-4 text-[#52B788]" />
+                <span>Supabase Row-Level Security</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#52B788]" />
+                <span>Zero-Data Retention Option</span>
               </div>
             </div>
           </div>
 
-          {/* Right Telemetry Matrix Card (5 Cols) */}
+          {/* Right Column: Architectural Status Card */}
           <div className="lg:col-span-5">
-            <div className="rounded-md border border-[#1a1a1a] bg-[#0a0a0a] p-6 space-y-5 font-serif">
-              <div className="flex items-center justify-between border-b border-[#1a1a1a] pb-3.5">
+            <div className="rounded-xl border border-[#1E2F26] bg-[#0E1712] p-6 space-y-5 shadow-sm">
+              <div className="flex items-center justify-between border-b border-[#1A2820] pb-4">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2.5 h-2.5 rounded-sm bg-[#00D084]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-white font-serif">
-                    Neural Engine Status
+                  <div className="w-2 h-2 rounded-full bg-[#52B788]" />
+                  <span className="text-xs font-semibold text-white tracking-wide uppercase">
+                    System Telemetry
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-[#00D084] bg-[#00D084]/10 px-2 py-0.5 rounded-sm border border-[#00D084]/20">
-                  ONLINE · 99.98%
+                <span className="text-[11px] font-mono text-[#52B788] bg-[#142E22] px-2.5 py-0.5 rounded border border-[#204A36]">
+                  STATUS: OPERATIONAL
                 </span>
               </div>
 
-              <div className="space-y-3 font-serif">
+              {/* Telemetry Rows */}
+              <div className="space-y-2.5">
                 {[
-                  { label: 'Ingestion Pipeline', val: 'Active (PDF, DOCX, PPTX)', icon: FileText },
-                  { label: 'Semantic Grounding', val: 'Supabase pgvector HNSW (384-dim)', icon: Database },
-                  { label: 'Agent Mesh', val: 'Autonomous Parallel Synthesis', icon: Cpu },
-                  { label: 'Access Control', val: 'Enterprise Role Separation', icon: Lock },
-                ].map((row, idx) => {
-                  const Icon = row.icon;
+                  { label: 'Document Ingestion', val: 'PDF, DOCX, PPTX (Active)', icon: FileText },
+                  { label: 'Vector Database', val: 'Supabase pgvector (384-dim)', icon: Database },
+                  { label: 'Autonomous Mesh', val: 'Parallel Agent Router (Online)', icon: Cpu },
+                  { label: 'Role Separation', val: 'Admin, Tech, PR Leads (Enforced)', icon: Lock },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
                   return (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-2.5 rounded-sm bg-[#111] border border-[#1a1a1a]"
+                      className="flex items-center justify-between p-3 rounded-lg bg-[#111C16] border border-[#1A2820]"
                     >
-                      <div className="flex items-center gap-2 text-xs text-gray-300">
-                        <Icon className="w-3.5 h-3.5 text-[#00D084]" />
-                        <span>{row.label}</span>
+                      <div className="flex items-center gap-2.5 text-xs text-[#DCE6E0]">
+                        <Icon className="w-3.5 h-3.5 text-[#52B788]" />
+                        <span className="font-medium">{item.label}</span>
                       </div>
-                      <span className="text-[11px] font-mono text-gray-400">
-                        {row.val}
+                      <span className="text-[11px] font-mono text-[#8CA396]">
+                        {item.val}
                       </span>
                     </div>
                   );
                 })}
               </div>
 
+              {/* Card Footer CTA */}
               <div className="pt-2">
                 <button
+                  type="button"
                   onClick={onPrimaryAction}
-                  className="w-full py-2.5 rounded-sm bg-[#111] hover:bg-[#00D084] text-[#00D084] hover:text-black border border-[#1a1a1a] font-bold text-xs font-serif transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 rounded-lg bg-[#142E22] hover:bg-[#1C3E2F] text-[#52B788] hover:text-white border border-[#204A36] text-xs font-semibold transition-colors flex items-center justify-center gap-2"
                 >
-                  <span>{isAuthenticated ? 'Open Studio Workspace' : 'Sign In to Authorize'}</span>
+                  <span>{isAuthenticated ? 'Enter Workspace' : 'Sign In to Authorize Workspace'}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -135,3 +155,4 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     </section>
   );
 };
+
