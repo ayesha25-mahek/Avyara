@@ -172,7 +172,13 @@ def _build_router_and_generators():
             self.planner.llm = pool
             self.ppt = PPTGenerator()
 
-            # Format a clear readable slide plan text outline for live UI preview
+        def generate(self, content_model, output_request):
+            topic = content_model.get("summary", "") or "Presentation Deck"
+            slide_plan = self.planner.create_slide_plan(topic)
+
+            path = self.ppt.create_presentation(slide_plan)
+            filename = os.path.basename(path)
+
             outline_lines = [f"# {slide_plan[0].get('title', 'Presentation Deck')}\n"] if slide_plan else []
             for s in slide_plan:
                 s_num = s.get("slide_number", "")
@@ -356,7 +362,7 @@ async def generate(
                             text = await asyncio.to_thread(reader.read, path)
                             extracted_texts.append(text)
                         except Exception as e:
-                            logger.warning("Could not read %s: %s", path, e)
+                            logger.warning("Could not read %s: %s", path, str(e).encode('ascii', 'replace').decode('ascii'))
 
             combined_text = "\n\n".join(filter(None, [prompt] + extracted_texts)).strip()
 
